@@ -6,9 +6,8 @@ const MyToys = () => {
     const [products, setProducts] = useState([]);
 
     const { user } = useContext(AuthContext);
-    const { email, disPlayName, photoURL } = user;
 
-    const url = `http://localhost:5000/myToys?email=${email}`
+    const url = `http://localhost:5000/myToys?email=${user.email}`
 
     useEffect(() => {
         fetch(url)

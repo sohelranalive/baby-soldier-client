@@ -23,7 +23,7 @@ const ToyRow = ({ product }) => {
             <td>{toy_name}</td>
             <td>{price}</td>
             <td className="text-center">{quantity}</td>
-            <td><Link to='/login' className="btn btn-primary btn-sm">Details</Link></td>
+            <td><Link to='/toyDetails' className="btn btn-primary btn-sm">Details</Link></td>
         </tr>
     );
 };
