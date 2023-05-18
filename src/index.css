@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.b-active {
+    color: #570DF8;
+}
+
+.b-active:hover {
+    background-color: #F7CD2E;
+}
+
+.b-default:hover {
+    background-color: #F7CD2E;
+}

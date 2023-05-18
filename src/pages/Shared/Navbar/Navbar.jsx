@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import profilePhoto from '../../../assets/defaultProfilePhoto.png'
 import { useContext } from 'react';
@@ -9,13 +9,19 @@ import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, userLogOut } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        userLogOut()
+    }
 
     const menuLi = <>
-        <li><Link to='/allToys'>All Toys</Link></li>
-        <li><Link to='/myToys'>My Toys</Link></li>
-        <li><Link to='/addToys'>Add a Toy</Link></li>
-        <li><Link to='/blog'>Blogs</Link></li>
+
+        <li className='font-bold'><NavLink to='/' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>Home</NavLink></li>
+        <li className='font-bold'><NavLink to='/allToys' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>All Toys</NavLink></li>
+        <li className='font-bold'><NavLink to='/myToys' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>My Toys</NavLink></li>
+        <li className='font-bold'><NavLink to='/addToys' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>Add a Toy</NavLink></li>
+        <li className='font-bold'><NavLink to='/blog' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>Blogs</NavLink></li>
     </>
 
     return (
@@ -44,11 +50,14 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {user
-                    ? <div className='h-14 w-14 rounded-full border-4 border-primary'>
-                        <img src={profilePhoto} alt="Profile Photo"
-                            className="h-full w-full rounded-full"
-                            data-tooltip-id="my-tooltip"
-                            data-tooltip-content={`Hello, ${user.name}`} />
+                    ? <div className='flex items-center'>
+                        <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2">LogOut</button>
+                        <div className='h-14 w-14 rounded-full border-4 border-primary'>
+                            <img src={profilePhoto} alt="Profile Photo"
+                                className="h-full w-full rounded-full"
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content={`Hello, ${user.displayName}`} />
+                        </div>
                     </div>
                     : <Link to='/login' className="btn btn-primary btn-sm">Login</Link>
                 }
