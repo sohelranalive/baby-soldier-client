@@ -13,7 +13,7 @@ const Products = () => {
             <p className='text-2xl'>Shop According to you kids age</p>
             <br />
             <Tabs>
-                <TabList selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+                <TabList onSelect={(index) => setTabIndex(index)}>
                     <Tab>Age: 2 to 6</Tab>
                     <Tab>Age: 7 to 10</Tab>
                     <Tab>Age: 11 to higher</Tab>
