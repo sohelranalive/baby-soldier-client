@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import profilePhoto from '../../../assets/defaultProfilePhoto.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../../provider/AuthProvider';
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+
 
 const Navbar = () => {
 
-    const user = null
+    const { user } = useContext(AuthContext)
 
     const menuLi = <>
         <li><Link to='/allToys'>All Toys</Link></li>
@@ -14,7 +19,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 border">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,12 +43,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {
-                    user ? <button className="btn btn-circle btn-outline">
-                        <img src={profilePhoto} alt="Profile Photo" className="h-full w-full rounded-full" />
-                    </button>
-                        : <Link to='/login' className="btn btn-primary btn-sm">Login</Link>
+                {user
+                    ? <div className='h-14 w-14 rounded-full border-4 border-primary'>
+                        <img src={profilePhoto} alt="Profile Photo"
+                            className="h-full w-full rounded-full"
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content={`Hello, ${user.name}`} />
+                    </div>
+                    : <Link to='/login' className="btn btn-primary btn-sm">Login</Link>
                 }
+                <Tooltip id="my-tooltip" />
             </div>
         </div>
     );
