@@ -53,10 +53,10 @@ const Navbar = () => {
                     ? <div className='flex items-center'>
                         <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2">LogOut</button>
                         <div className='h-14 w-14 rounded-full border-4 border-primary'>
-                            <img src={profilePhoto} alt="Profile Photo"
+                            <img src={user?.photoURL || profilePhoto} alt="Profile Photo"
                                 className="h-full w-full rounded-full"
                                 data-tooltip-id="my-tooltip"
-                                data-tooltip-content={`Hello, ${user.displayName}`} />
+                                data-tooltip-content={`Hello, ${user?.displayName}`} />
                         </div>
                     </div>
                     : <Link to='/login' className="btn btn-primary btn-sm">Login</Link>
