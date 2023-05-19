@@ -1,8 +1,9 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const SingleToyRow = ({ product }) => {
+const SingleToyRow = ({ product, control, setControl }) => {
 
-    const { toy_photo, description, category, toy_name, price, quantity } = product;
+    const { _id, toy_photo, description, category, toy_name, price, quantity } = product;
 
     let sub_category = ''
 
@@ -16,12 +17,26 @@ const SingleToyRow = ({ product }) => {
         sub_category = 'Ages: 11 years and up'
     }
 
+    const handleDeleteProduct = (id) => {
+        fetch(`http://localhost:5000/myToys/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    setControl(!control)
+                }
+            })
+    }
+
+
     return (
         <tr>
             <th>
                 <div className="avatar">
-                    <div className="mask mask-squircle w-14 h-14">
-                        <img src={toy_photo} alt="Avatar Tailwind CSS Component" />
+                    <div className="border-2 border-primary w-16 h-16 rounded-md">
+                        <img src={toy_photo} alt="toy" />
                     </div>
                 </div>
             </th>
@@ -34,8 +49,9 @@ const SingleToyRow = ({ product }) => {
             <td className="text-center">{price}</td>
             <td className="text-center">{quantity}</td>
             <td className="space-x-2 text-center">
-                <button className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></button>
-                <button className="btn btn-circle bg-red-600 border-red-600 "><FaTrashAlt className="h-6 w-6" /></button>
+                <Link to={`/updateToyDetails/${_id}`} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></Link>
+                {/* <button onClick={() => handleEditProduct(_id)} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></button> */}
+                <button onClick={() => handleDeleteProduct(_id)} className="btn btn-circle bg-red-600 border-red-600 "><FaTrashAlt className="h-6 w-6" /></button>
             </td>
         </tr>
     );

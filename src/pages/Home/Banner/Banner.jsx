@@ -13,7 +13,6 @@ const Banner = () => {
                 <button className="btn btn-warning text-[#000808]">Explore More</button>
             </div>
         </div>
-
     );
 };
 

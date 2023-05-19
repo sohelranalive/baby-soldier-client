@@ -5,6 +5,7 @@ import SingleToyRow from "./SingleToyRow";
 const MyToys = () => {
 
     const [products, setProducts] = useState([]);
+    const [control, setControl] = useState(false)
 
     const { user } = useContext(AuthContext);
 
@@ -16,7 +17,7 @@ const MyToys = () => {
             .then(data => {
                 setProducts(data);
             })
-    }, [url])
+    }, [url, control])
 
     return (
         <div className="container mx-auto mt-10">
@@ -38,6 +39,8 @@ const MyToys = () => {
                         {products.map(product => <SingleToyRow
                             key={product._id}
                             product={product}
+                            control={control}
+                            setControl={setControl}
                         ></SingleToyRow>)}
                     </tbody>
                 </table>

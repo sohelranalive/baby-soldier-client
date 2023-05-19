@@ -2,8 +2,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import glogo from '../../assets/g-logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
+    const notify = () => toast.success('User Successfully Logged In', {
+        position: "top-right",
+        autoClose: 1000,
+    });
 
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
@@ -22,6 +29,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                notify()
             })
             .catch(error => {
                 console.log(error);
@@ -34,8 +42,9 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                notify()
             })
-            .then(error => {
+            .catch(error => {
                 console.log(error);
             })
     }

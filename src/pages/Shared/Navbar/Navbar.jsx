@@ -1,22 +1,50 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import profilePhoto from '../../../assets/defaultProfilePhoto.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../../provider/AuthProvider';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
-
+import Swal from 'sweetalert2'
+import { ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
 
+
     const { user, userLogOut } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleLogout = () => {
-        userLogOut()
+
+        Swal.fire({
+            title: 'Doy you really want to logout?',
+            text: "You won't be able to use few features !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                userLogOut()
+                    .then(() => {
+                        Swal.fire(
+                            'Logged Out!',
+                            'User logout successful',
+                            'success'
+                        )
+                        navigate('/')
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            }
+        })
+
+
     }
 
     const menuLi = <>
-
         <li className='font-bold'><NavLink to='/' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>Home</NavLink></li>
         <li className='font-bold'><NavLink to='/allToys' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>All Toys</NavLink></li>
         <li className='font-bold'><NavLink to='/myToys' className={({ isActive }) => (isActive ? 'b-active' : 'b-default')}>My Toys</NavLink></li>
@@ -25,7 +53,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 border">
+        <div className="navbar bg-base-100 px-4">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -35,11 +63,10 @@ const Navbar = () => {
                         {menuLi}
                     </ul>
                 </div>
-                {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
-                <Link to='/'>
+                <Link to='/' className='hidden lg:block'>
                     <img src={logo} alt="logo" className='h-[80px] w-[80px]' />
                 </Link>
-                <Link to='/'>
+                <Link to='/' className='ms-2'>
                     <h1 className='text-4xl font-extrabold'><span className='text-[#F7CD2E]'>Baby</span><span className='text-primary'> Soldier</span></h1>
                 </Link>
             </div>
@@ -63,6 +90,7 @@ const Navbar = () => {
                 }
                 <Tooltip id="my-tooltip" />
             </div>
+            <ToastContainer />
         </div>
     );
 };
