@@ -68,7 +68,7 @@ const Products = () => {
 
                     <div>
                         {activeTab === 1 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
-                            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center'>
+                            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
                                 {
                                     products.map(product =>
                                         <SingleProductCard
@@ -79,18 +79,24 @@ const Products = () => {
                             </div>
                         </div>}
                         {activeTab === 2 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
-                            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center'>
+                            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
                                 {
                                     products.map(product =>
-                                        <SingleProductCard key={product._id}></SingleProductCard>)
+                                        <SingleProductCard
+                                            key={product._id}
+                                            product={product}>
+                                        </SingleProductCard>)
                                 }
                             </div>
                         </div>}
                         {activeTab === 3 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
-                            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center'>
+                            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
                                 {
                                     products.map(product =>
-                                        <SingleProductCard key={product._id}></SingleProductCard>)
+                                        <SingleProductCard
+                                            key={product._id}
+                                            product={product}>
+                                        </SingleProductCard>)
                                 }
                             </div>
                         </div>}
