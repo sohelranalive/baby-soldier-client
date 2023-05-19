@@ -18,37 +18,37 @@ const Gallery = () => {
                 {/* <!-- First Col --> */}
                 <div className="flex w-full flex-col space-y-4">
                     <div className="h-40 rounded-lg bg-red-500">
-                        <img src={image_9} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_9} alt="" className='h-full w-full rounded-lg border-2 border-primary' />
                     </div>
                     <div className="h-40 rounded-lg bg-red-500">
-                        <img src={image_1} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_1} alt="" className='h-full w-full rounded-lg border-2 border-[#F7CD2E]' />
                     </div>
                     <div className="h-60 rounded-lg bg-red-500">
-                        <img src={image_2} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_2} alt="" className='h-full w-full rounded-lg border-2 border-primary' />
                     </div>
                 </div>
                 {/* <!-- Sec Col --> */}
                 <div className="flex w-full flex-col space-y-4">
                     <div className="h-36 rounded-lg bg-blue-500">
-                        <img src={image_3} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_3} alt="" className='h-full w-full rounded-lg border-2 border-[#F7CD2E]' />
                     </div>
                     <div className="h-64 rounded-lg bg-blue-500">
-                        <img src={image_4} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_4} alt="" className='h-full w-full rounded-lg border-2 border-primary' />
                     </div>
                     <div className="h-40 rounded-lg bg-blue-500">
-                        <img src={image_5} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_5} alt="" className='h-full w-full rounded-lg border-2 border-[#F7CD2E]' />
                     </div>
                 </div>
                 {/* <!-- Third Col --> */}
                 <div className="flex w-full flex-col space-y-4">
                     <div className="h-56 rounded-lg bg-green-500">
-                        <img src={image_6} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_6} alt="" className='h-full w-full rounded-lg border-2 border-primary' />
                     </div>
                     <div className="h-40 rounded-lg bg-green-500">
-                        <img src={image_7} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_7} alt="" className='h-full w-full rounded-lg border-2 border-[#F7CD2E]' />
                     </div>
                     <div className="h-44 rounded-lg bg-green-500">
-                        <img src={image_8} alt="" className='h-full w-full rounded-lg' />
+                        <img src={image_8} alt="" className='h-full w-full rounded-lg border-2 border-primary' />
                     </div>
                 </div>
             </div>

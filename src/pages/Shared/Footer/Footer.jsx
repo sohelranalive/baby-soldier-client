@@ -6,13 +6,13 @@ import { IoIosMail, IoMdCall } from "react-icons/io";
 const Footer = () => {
     return (
 
-        <footer className="mt-20 bg-slate-50">
+        <footer className="mt-20 bg-slate-50 shadow-inner">
 
             {/* Footer Main Section */}
 
-            <div className="py-10 container border mx-auto">
+            <div className="py-10 container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-4 px-2 justify-items-center gap-8">
-                    {/* Logo and Name, samll description */}
+                    {/* Logo and Name, small description */}
                     <div className="">
                         <Link to='/' className="flex justify-center md:justify-start">
                             <img src={logo} alt="logo" className="h-20 w-20" />
