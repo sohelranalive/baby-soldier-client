@@ -20,10 +20,10 @@ const ToyRow = ({ product }) => {
         <tr>
             <th>{seller_name}</th>
             <td>{sub_category}</td>
-            <td>{toy_name}</td>
-            <td>{price}</td>
+            <td>{toy_name.slice(0, 40)}...</td>
+            <td className="text-center">{price}</td>
             <td className="text-center">{quantity}</td>
-            <td><Link to={`/toyDetails/${_id}`} className="btn btn-primary btn-sm">Details</Link></td>
+            <td className="text-center"><Link to={`/toyDetails/${_id}`} className="btn btn-primary btn-sm">Details</Link></td>
         </tr>
     );
 };

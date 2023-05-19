@@ -80,13 +80,13 @@ const AddToy = () => {
                         <label className="label">
                             <span className="label-text">Price</span>
                         </label>
-                        <input type="text" name='price' placeholder="$-" className="input input-bordered" required />
+                        <input type="number" name='price' placeholder="$-" className="input input-bordered" required min="1" step="0.01" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Ratings</span>
                         </label>
-                        <input type="text" required name='ratings' placeholder="1 to 10" className="input input-bordered" />
+                        <input type="number" required name='ratings' placeholder="1 to 5" className="input input-bordered" min="1" max="5" step="0.1" />
                     </div>
                     <div className="form-control">
                         <label className="label">

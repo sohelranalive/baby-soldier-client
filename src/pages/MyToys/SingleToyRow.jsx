@@ -42,7 +42,7 @@ const SingleToyRow = ({ product, control, setControl }) => {
             </th>
             <td>{sub_category}</td>
             <td className='w-16'>
-                <h1>{toy_name}</h1>
+                <h1>{toy_name.slice(0, 40)}...</h1>
                 <br />
                 <p>Details: {description.slice(0, 50)}.....</p>
             </td>
