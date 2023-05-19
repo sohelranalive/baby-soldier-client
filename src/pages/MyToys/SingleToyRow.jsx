@@ -36,7 +36,11 @@ const SingleToyRow = ({ product, control, setControl }) => {
             <th>
                 <div className="avatar">
                     <div className="border-2 border-primary w-16 h-16 rounded-md">
-                        <img src={toy_photo} alt="toy" />
+                        <Link to={`/toyDetails/${_id}`}>
+                            <abbr title="View Details">
+                                <img src={toy_photo} alt="toy" />
+                            </abbr>
+                        </Link>
                     </div>
                 </div>
             </th>

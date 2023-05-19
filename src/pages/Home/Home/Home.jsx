@@ -1,5 +1,5 @@
 import Banner from "../Banner/Banner";
-import Explore from "../Explore/Explore";
+import Gallery from "../Gallery/Gallery";
 import Products from "../Products/Products";
 import Upcoming from "../Upcoming/Upcoming";
 
@@ -9,7 +9,7 @@ const Home = () => {
             <Banner></Banner>
             <div className="container mx-auto">
                 <Products></Products>
-                <Explore></Explore>
+                <Gallery></Gallery>
                 <Upcoming></Upcoming>
             </div>
         </div>
