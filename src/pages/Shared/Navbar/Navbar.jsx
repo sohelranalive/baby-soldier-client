@@ -61,6 +61,20 @@ const Navbar = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {menuLi}
+                        <li>
+                            {user
+                                ? <div className='flex items-center'>
+                                    <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2">LogOut</button>
+                                    <div className='h-14 w-14 rounded-full border-4 border-primary hidden md:block'>
+                                        <img src={user?.photoURL || profilePhoto} alt="Profile Photo"
+                                            className="h-full w-full rounded-full"
+                                            data-tooltip-id="my-tooltip"
+                                            data-tooltip-content={`Hello, ${user?.displayName}`} />
+                                    </div>
+                                </div>
+                                : <Link to='/login' className="btn btn-primary btn-sm hidden md:block">Login</Link>
+                            }
+                        </li>
                     </ul>
                 </div>
                 <Link to='/' className='hidden lg:block'>
@@ -78,7 +92,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {user
                     ? <div className='flex items-center'>
-                        <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2">LogOut</button>
+                        <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2 hidden md:block">LogOut</button>
                         <div className='h-14 w-14 rounded-full border-4 border-primary'>
                             <img src={user?.photoURL || profilePhoto} alt="Profile Photo"
                                 className="h-full w-full rounded-full"
