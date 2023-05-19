@@ -10,7 +10,7 @@ import image_9 from '../../../assets/gallery/img9.png'
 
 const Gallery = () => {
     return (
-        <div className="mt-10 mx-auto p-4">
+        <div className="mt-10 p-4">
             <h1 className="text-5xl font-extrabold text-[#F7CD2E] text-center">Our Happy Clients</h1>
             <p className='text-3xl text-center text-primary font-semibold mt-4'>See some satisfied clients with our products</p>
 
