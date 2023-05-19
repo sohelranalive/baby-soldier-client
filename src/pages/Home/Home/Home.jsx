@@ -8,8 +8,8 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <div className="container mx-auto">
-                <Explore></Explore>
                 <Products></Products>
+                <Explore></Explore>
                 <Upcoming></Upcoming>
             </div>
         </div>

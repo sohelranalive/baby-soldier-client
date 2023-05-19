@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
+import SingleProductCard from './SingleProductCard';
 
 const Products = () => {
 
@@ -37,55 +38,61 @@ const Products = () => {
     };
 
     return (
-        <div className="border mt-20">
+        <div className="mt-10 px-4">
             <h1 className="text-5xl font-extrabold text-[#F7CD2E] text-center">Our Products</h1>
-            <p className='text-2xl'>Shop According to you kids age</p>
+            <p className='text-3xl text-center text-primary font-semibold mt-4'>Buy our toy guns according to you kids age</p>
             <br />
 
             <div>
                 <div className="mx-auto">
-                    <div className="flex border-b border-gray-300 justify-center">
+                    <div className="md:flex border-b border-gray-300 justify-center">
                         <button
-                            className={`py-2 px-4 text-gray-600 hover:text-gray-800 ${activeTab === 1 ? 'border-b-2 border-indigo-500' : ''
-                                }`}
+                            className={`mx-auto block md:m-0 md:inline py-2 px-4 text-gray-600 hover:text-gray-800 ${activeTab === 1 ? 'border-b-4 border-primary' : ''}`}
                             onClick={() => handleTabClick(1)}
                         >
-                            Age: 2 - 6 Years
+                            2 - 6 Years
                         </button>
                         <button
-                            className={`py-2 px-4 text-gray-600 hover:text-gray-800 ${activeTab === 2 ? 'border-b-2 border-indigo-500' : ''
-                                }`}
+                            className={`mx-auto block md:m-0 md:inline py-2 px-4 text-gray-600 hover:text-gray-800 ${activeTab === 2 ? 'border-b-4 border-primary' : ''}`}
                             onClick={() => handleTabClick(2)}
                         >
-                            Age: 7 - 10 Years
+                            7 - 10 Years
                         </button>
                         <button
-                            className={`py-2 px-4 text-gray-600 hover:text-gray-800 ${activeTab === 3 ? 'border-b-2 border-indigo-500' : ''
-                                }`}
+                            className={`mx-auto block md:m-0 md:inline py-2 px-4 text-gray-600 hover:text-gray-800 ${activeTab === 3 ? 'border-b-4 border-primary' : ''}`}
                             onClick={() => handleTabClick(3)}
                         >
-                            Age: 11 Years - Above
+                            11 Years - Above
                         </button>
                     </div>
 
-                    <div className="mt-4">
-                        {activeTab === 1 && <div className="bg-gray-200 p-4">
-                            {
-                                products.map(product =>
-                                    <h1 key={product._id}>{product.toy_name}</h1>)
-                            }
+                    <div>
+                        {activeTab === 1 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
+                            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center'>
+                                {
+                                    products.map(product =>
+                                        <SingleProductCard
+                                            key={product._id}
+                                            product={product}>
+                                        </SingleProductCard>)
+                                }
+                            </div>
                         </div>}
-                        {activeTab === 2 && <div className="bg-gray-200 p-4">
-                            {
-                                products.map(product =>
-                                    <h1 key={product._id}>{product.toy_name}</h1>)
-                            }
+                        {activeTab === 2 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
+                            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center'>
+                                {
+                                    products.map(product =>
+                                        <SingleProductCard key={product._id}></SingleProductCard>)
+                                }
+                            </div>
                         </div>}
-                        {activeTab === 3 && <div className="bg-gray-200 p-4">
-                            {
-                                products.map(product =>
-                                    <h1 key={product._id}>{product.toy_name}</h1>)
-                            }
+                        {activeTab === 3 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
+                            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 place-items-center'>
+                                {
+                                    products.map(product =>
+                                        <SingleProductCard key={product._id}></SingleProductCard>)
+                                }
+                            </div>
                         </div>}
                     </div>
                 </div>
