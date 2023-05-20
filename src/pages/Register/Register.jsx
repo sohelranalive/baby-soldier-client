@@ -8,9 +8,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
-    const notify = () => toast.success('Registration successful, please login', {
+    const notify = () => toast.success('Registration successful, please login now', {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 3000,
     });
 
     const { createUser, userProfileUpdate, userLogOut } = useContext(AuthContext)
