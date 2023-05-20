@@ -4,7 +4,7 @@ import SingleProductCard from './SingleProductCard';
 
 const Products = () => {
 
-    const [activeTab, setActiveTab] = useState(1);
+    const [activeTab, setActiveTab] = useState(2);
     const [products, setProducts] = useState([])
 
 

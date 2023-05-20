@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ToyRow = ({ product }) => {
 
@@ -16,6 +19,24 @@ const ToyRow = ({ product }) => {
         sub_category = 'Ages: 11 years and up'
     }
 
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const notify = () => toast.warning('You have to log in first to view details', {
+        position: "top-right",
+        autoClose: 3000,
+    });
+
+    const handleViewDetails = (_id) => {
+        const url = `/toyDetails/${_id}`
+
+        if (user) {
+            return navigate(url)
+        }
+        notify()
+        navigate(url)
+    }
+
     return (
         <tr>
             <th>
@@ -30,7 +51,10 @@ const ToyRow = ({ product }) => {
             <td>{toy_name.slice(0, 40)}...</td>
             <td className="text-center">{price}</td>
             <td className="text-center">{quantity}</td>
-            <td className="text-center"><Link to={`/toyDetails/${_id}`} className="btn btn-primary btn-sm">Details</Link></td>
+            <td className="text-center">
+                <button onClick={() => handleViewDetails(_id)} className="btn btn-primary btn-sm">Details</button>
+                {/* <Link to={`/toyDetails/${_id}`} className="btn btn-primary btn-sm">Details</Link> */}
+            </td>
         </tr>
     );
 };

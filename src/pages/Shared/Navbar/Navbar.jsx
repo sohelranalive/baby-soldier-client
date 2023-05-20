@@ -6,10 +6,14 @@ import { AuthContext } from '../../../provider/AuthProvider';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import Swal from 'sweetalert2'
+import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
-
+    const notify = () => toast.success('Logout Successful', {
+        position: "top-right",
+        autoClose: 1000,
+    });
 
     const { user, userLogOut } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -28,11 +32,7 @@ const Navbar = () => {
             if (result.isConfirmed) {
                 userLogOut()
                     .then(() => {
-                        Swal.fire(
-                            'Logged Out!',
-                            'User logout successful',
-                            'success'
-                        )
+                        notify()
                         navigate('/')
                     })
                     .catch((error) => {

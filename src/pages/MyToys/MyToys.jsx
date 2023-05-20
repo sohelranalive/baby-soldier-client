@@ -25,9 +25,11 @@ const MyToys = () => {
     const url = `https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/myToys?email=${user.email}&sort=${order}`
 
     useEffect(() => {
+        console.log(url);
         fetch(url)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setProducts(data);
             })
     }, [url, control])
@@ -57,12 +59,16 @@ const MyToys = () => {
                     </thead>
                     <tbody>
                         {/* row */}
-                        {products.map(product => <SingleToyRow
-                            key={product._id}
-                            product={product}
-                            control={control}
-                            setControl={setControl}
-                        ></SingleToyRow>)}
+
+                        {products.length === 0
+                            ? <h1 className="2xl mt-5 italic">No data found</h1>
+                            : products.map(product => <SingleToyRow
+                                key={product._id}
+                                product={product}
+                                control={control}
+                                setControl={setControl}
+                            ></SingleToyRow>)
+                        }
                     </tbody>
                 </table>
             </div>
