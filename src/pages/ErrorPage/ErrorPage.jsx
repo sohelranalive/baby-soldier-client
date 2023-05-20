@@ -7,6 +7,8 @@ const ErrorPage = () => {
     return (
         <div className='error-page'>
 
+
+
             <h1>{status}</h1>
             <h1>Opps !!!</h1>
             <h1>{error?.message}</h1>

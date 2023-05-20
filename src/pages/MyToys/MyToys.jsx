@@ -22,7 +22,7 @@ const MyToys = () => {
         setActive(2)
     }
 
-    const url = `https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/myToys?email=${user.email}&sort=${order}`
+    const url = `https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/myToys?email=${user?.email}&sort=${order}`
 
     useEffect(() => {
         console.log(url);
@@ -32,7 +32,7 @@ const MyToys = () => {
                 console.log(data);
                 setProducts(data);
             })
-    }, [url, control])
+    }, [user, url, control])
 
     return (
         <div className="container mx-auto mt-10">

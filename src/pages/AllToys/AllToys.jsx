@@ -18,19 +18,35 @@ const AllToys = () => {
     const [inputValue, setInputValue] = useState('');
     const [dataToShow, setDataToShow] = useState([]);
 
-    useEffect(() => {
-        setDataToShow(loadedToys);
-    }, [loadedToys]);
+    // useEffect(() => {
+    //     if (inputValue === '') {
+    //         setDataToShow(loadedToys)
+    //         return;
+    //     }
+    //     setDataToShow(loadedToys);
+    // }, [loadedToys, inputValue]);
+
+    // useEffect(() => {
+    //     if (inputValue === '') {
+    //         setDataToShow(loadedToys);
+    //     } else {
+    //         const result = loadedToys.filter((item) =>
+    //             item.toy_name.toLowerCase().includes(inputValue.toLowerCase()));
+    //         setDataToShow(result);
+    //     }
+    // }, [inputValue, loadedToys]);
 
     useEffect(() => {
         if (inputValue === '') {
-            setDataToShow(loadedToys);
-        } else {
-            const result = loadedToys.filter((item) =>
-                item.toy_name.toLowerCase().includes(inputValue.toLowerCase()));
-            setDataToShow(result);
+            setDataToShow(loadedToys)
         }
-    }, [inputValue, loadedToys]);
+        fetch(`https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/searchToyByName/${inputValue}`)
+            .then(res => res.json())
+            .then(data => {
+                setDataToShow(data)
+            })
+    }, [loadedToys, inputValue])
+
 
     return (
         <div className="container mx-auto mt-10">
