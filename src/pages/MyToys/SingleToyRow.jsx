@@ -1,5 +1,9 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
+import Modal from "./Modal";
+import { useState } from "react";
+
 
 const SingleToyRow = ({ product, control, setControl }) => {
 
@@ -18,16 +22,42 @@ const SingleToyRow = ({ product, control, setControl }) => {
     }
 
     const handleDeleteProduct = (id) => {
-        fetch(`http://localhost:5000/myToys/${id}`, {
-            method: 'DELETE'
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to restore this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/myToys/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        if (data.deletedCount > 0) {
+                            setControl(!control)
+                        }
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.deletedCount > 0) {
-                    setControl(!control)
-                }
-            })
+    }
+
+    const [isOpen, setIsOpen] = useState(false)
+    const [id, setId] = useState('')
+
+    const handleEditProduct = (_id) => {
+        setIsOpen(true)
+        setId(_id)
     }
 
 
@@ -46,15 +76,17 @@ const SingleToyRow = ({ product, control, setControl }) => {
             </th>
             <td>{sub_category}</td>
             <td className='w-16'>
-                <h1>{toy_name.slice(0, 40)}...</h1>
+                <h1>{toy_name.slice(0, 35)}...</h1>
                 <br />
-                <p>Details: {description.slice(0, 50)}.....</p>
+                <p>Description: {description.slice(0, 40)}.....</p>
             </td>
             <td className="text-center">{price}</td>
             <td className="text-center">{quantity}</td>
             <td className="space-x-2 text-center">
-                <Link to={`/updateToyDetails/${_id}`} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></Link>
-                {/* <button onClick={() => handleEditProduct(_id)} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></button> */}
+                {/* <Link to={`/updateToyDetails/${_id}`} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></Link> */}
+                <button onClick={() => handleEditProduct(_id)} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></button>
+                {isOpen && <Modal id={id} isOpen={isOpen} setIsOpen={setIsOpen} ></Modal>}
+
                 <button onClick={() => handleDeleteProduct(_id)} className="btn btn-circle bg-red-600 border-red-600 "><FaTrashAlt className="h-6 w-6" /></button>
             </td>
         </tr>

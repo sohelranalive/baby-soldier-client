@@ -8,14 +8,14 @@ const ToyDetails = () => {
     const descriptionLines = description.split(/\r?\n/)
 
     return (
-        <div className="container mx-auto mt-10">
-            <div className="md:flex items-center">
+        <div className="container mx-auto mt-10 px-4">
+            <div className="md:flex items-center space-y-4 md:space-y-0">
                 <div className="md:w-2/5">
                     <div className="border-2 border-primary rounded-lg p-6">
                         <img src={toy_photo} alt="" className="h-full w-full" />
                     </div>
                 </div>
-                <div className="md:w-3/5 space-y-6 ps-6">
+                <div className="md:w-3/5 ps-0 md:ps-6 space-y-4">
                     <div>
                         <h1 className="text-3xl font-semibold mb-2">{toy_name}</h1>
                         <p className="text-2xl">Ratings: {ratings}</p>

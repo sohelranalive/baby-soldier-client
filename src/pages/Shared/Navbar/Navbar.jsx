@@ -53,7 +53,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 px-4">
+        <div className="navbar bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -77,14 +77,14 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <Link to='/' className='hidden lg:block'>
+                <Link to='/' className='hidden md:block'>
                     <img src={logo} alt="logo" className='h-[80px] w-[80px]' />
                 </Link>
                 <Link to='/' className='ms-2'>
                     <h1 className='text-4xl font-extrabold'><span className='text-[#F7CD2E]'>Baby</span><span className='text-primary'> Soldier</span></h1>
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden md:flex">
                 <ul className="menu menu-horizontal px-1">
                     {menuLi}
                 </ul>
