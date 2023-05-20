@@ -15,13 +15,12 @@ const SingleProductCard = ({ product }) => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{toy_name.slice(0, 35)}</h2>
                 <p>Price: ${price}</p>
-                <p>Ratings:
-                    <Rating
-                        style={{ maxWidth: 100 }}
-                        value={parseFloat(ratings)}
-                        readOnly
-                    />
-                </p>
+                <p>Ratings:</p>
+                <Rating
+                    style={{ maxWidth: 100 }}
+                    value={parseFloat(ratings)}
+                    readOnly
+                />
                 <div className="card-actions">
                     <Link to={`/toyDetails/${_id}`} className="btn btn-primary">View Details</Link>
                 </div>

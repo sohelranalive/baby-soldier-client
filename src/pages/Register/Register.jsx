@@ -2,8 +2,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import glogo from '../../assets/g-logo.png'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+
+    const notify = () => toast.success('Registration successful, please login', {
+        position: "top-right",
+        autoClose: 1000,
+    });
 
     const { createUser, userProfileUpdate, userLogOut } = useContext(AuthContext)
 
@@ -12,6 +20,7 @@ const Register = () => {
     const navigate = useNavigate()
 
     const handleRegistration = (event) => {
+        setError('')
         event.preventDefault()
         const form = event.target;
         const displayName = form.name.value;
@@ -20,7 +29,7 @@ const Register = () => {
         const password = form.password.value;
 
         if (password.length < 6) {
-            setError('Password must be 6 character!')
+            setError('Password must be 6 character long !')
             return;
         }
 
@@ -37,12 +46,12 @@ const Register = () => {
                 const createdUser = result.user;
                 console.log(createdUser);
                 userLogOut()
+                notify()
                 navigate('/login')
             })
             .catch(error => {
-                const errorCode = error.code;
-                console.log(errorCode);
-                if (errorCode == 'auth/email-already-in-use') {
+                console.log(error.code);
+                if (error.code == 'auth/email-already-in-use') {
                     setError('Enter a new email, this email already in use')
                 }
             })
@@ -78,15 +87,16 @@ const Register = () => {
                             </label>
                             <input type="password" name='password' required placeholder="password" className="input input-bordered" />
                         </div>
-                        {
-                            <p className='mt-2 text-red-500'>{error}</p>
-                        }
-                        <div className="form-control mt-6 col-span-2">
+                        <div className="form-control col-span-2">
+                            <label className="label">
+                                <p className="text-red-500 font-bold italic">{error}</p>
+                            </label>
                             <input className="btn btn-primary" type="submit" value="Register" />
                         </div>
                         <div className="divider col-span-2">OR</div>
                     </div>
                 </form>
+                <ToastContainer />
                 <div className=" w-2/6 mx-auto mb-10">
                     <div className="form-control space-y-4">
                         <button className="btn btn-outline hover:bg-primary">

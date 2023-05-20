@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import glogo from '../../assets/g-logo.png'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,10 +15,12 @@ const Login = () => {
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
 
+    const [error, setError] = useState('')
     const { userLogIn, googleLogIn } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleLogIn = (event) => {
+        setError('')
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
@@ -32,7 +34,13 @@ const Login = () => {
                 notify()
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.code);
+                if (error.code === 'auth/user-not-found') {
+                    setError('User Not Found')
+                }
+                if (error.code === 'auth/wrong-password') {
+                    setError('Incorrect Password')
+                }
             })
     }
 
@@ -65,8 +73,11 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" name="password" required placeholder="password" className="input input-bordered" />
+                        <label className="label">
+                            <p className="text-red-500 font-bold italic">{error}</p>
+                        </label>
                     </div>
-                    <div className="form-control mt-6">
+                    <div className="form-control">
                         <input type="submit" value="Login" className="btn btn-primary" />
                     </div>
                     <div className="divider">OR</div>
