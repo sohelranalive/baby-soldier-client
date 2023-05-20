@@ -33,7 +33,7 @@ const SingleToyRow = ({ product, control, setControl }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/myToys/${id}`, {
+                fetch(`https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/myToys/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -85,7 +85,14 @@ const SingleToyRow = ({ product, control, setControl }) => {
             <td className="space-x-2 text-center">
                 {/* <Link to={`/updateToyDetails/${_id}`} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></Link> */}
                 <button onClick={() => handleEditProduct(_id)} className="btn btn-circle bg-primary border-primary"><FaEdit className="h-6 w-6" /></button>
-                {isOpen && <Modal id={id} isOpen={isOpen} setIsOpen={setIsOpen} ></Modal>}
+
+                {isOpen && <Modal
+                    id={id}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    control={control}
+                    setControl={setControl}
+                ></Modal>}
 
                 <button onClick={() => handleDeleteProduct(_id)} className="btn btn-circle bg-red-600 border-red-600 "><FaTrashAlt className="h-6 w-6" /></button>
             </td>

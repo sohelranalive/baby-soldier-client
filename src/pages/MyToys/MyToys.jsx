@@ -22,7 +22,7 @@ const MyToys = () => {
         setActive(2)
     }
 
-    const url = `http://localhost:5000/myToys?email=${user.email}&sort=${order}`
+    const url = `https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/myToys?email=${user.email}&sort=${order}`
 
     useEffect(() => {
         fetch(url)

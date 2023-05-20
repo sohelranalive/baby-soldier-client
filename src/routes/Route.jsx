@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: '/allToys',
                 element: <AllToys></AllToys>,
-                loader: () => fetch('http://localhost:5000/allToys')
+                loader: () => fetch('https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/allToys')
             },
             {
                 path: '/myToys',
@@ -48,12 +48,12 @@ const router = createBrowserRouter([
             {
                 path: '/toyDetails/:id',
                 element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toyDetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/toyDetails/${params.id}`)
             },
             {
                 path: '/updateToyDetails/:id',
                 element: <PrivateRoute><UpdateToyInfo></UpdateToyInfo></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/toyDetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/toyDetails/${params.id}`)
             }
         ]
     }

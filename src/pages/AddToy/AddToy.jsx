@@ -1,9 +1,17 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddToy = () => {
 
     const { user } = useContext(AuthContext)
+
+    const notify = () => toast.success('Your product has added successfully', {
+        position: "top-center",
+        autoClose: 1000,
+    });
 
     const handleToyAdd = (event) => {
         event.preventDefault()
@@ -21,7 +29,7 @@ const AddToy = () => {
 
         const toyInfo = { toy_photo, toy_name, seller_name, seller_email, category, price, ratings, quantity, description }
 
-        fetch('http://localhost:5000/addToys', {
+        fetch('https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/addToys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -30,7 +38,10 @@ const AddToy = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data.insertedId);
+                if (data.insertedId) {
+                    notify()
+                    form.reset()
+                }
             })
 
     }
@@ -105,6 +116,7 @@ const AddToy = () => {
                     </div>
                 </div>
             </form>
+            <ToastContainer />
         </div>
     );
 };

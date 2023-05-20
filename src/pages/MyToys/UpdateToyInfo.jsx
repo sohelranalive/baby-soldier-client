@@ -6,7 +6,7 @@ const UpdateToyInfo = () => {
     console.log(loadedData);
 
     //const handleEditProduct = (id) => {
-    //     fetch(`http://localhost:5000/myToys/${id}`, {
+    //     fetch(`https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/myToys/${id}`, {
     //         method: 'PATCH',
     //         headers: {
     //             'content-type': 'application/json'

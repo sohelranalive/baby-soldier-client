@@ -1,10 +1,20 @@
 import { useEffect, useState } from "react";
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Modal = ({ id, isOpen, setIsOpen }) => {
+
+const Modal = ({ id, isOpen, setIsOpen, control, setControl }) => {
+
+    const notify = () => toast.success('Information updated successfully', {
+        position: "top-center",
+        autoClose: 1000,
+    });
+
 
     const [product, setProduct] = useState([])
 
-    const url = `http://localhost:5000/myToys/${id}`
+    const url = `https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/toyDetails/${id}`
 
     useEffect(() => {
         fetch(url)
@@ -25,7 +35,21 @@ const Modal = ({ id, isOpen, setIsOpen }) => {
 
         const updatedToyInfo = { price, quantity, description }
 
-        console.log(updatedToyInfo);
+        fetch(`https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/myToys/${product._id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedToyInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    setControl(!control)
+                    notify()
+                }
+            })
 
         setIsOpen(!isOpen)
     }
@@ -49,19 +73,19 @@ const Modal = ({ id, isOpen, setIsOpen }) => {
                                 <label className="label">
                                     <span className="label-text">Price</span>
                                 </label>
-                                <input type="number" name='price' placeholder="$-" className="input input-bordered" required min="1" step="0.01" />
+                                <input type="number" name='price' defaultValue={product.price} className="input input-bordered" required min="1" step="0.01" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Available Quantity</span>
                                 </label>
-                                <input type="number" required name='quantity' placeholder="100/200/300/..." className="input input-bordered" />
+                                <input type="number" required name='quantity' defaultValue={product.quantity} className="input input-bordered" />
                             </div>
                             <div className="form-control mb-5">
                                 <label className="label">
                                     <span className="label-text">Description</span>
                                 </label>
-                                <textarea name='description' required placeholder="Details Description" className="textarea textarea-bordered" ></textarea>
+                                <textarea name='description' required defaultValue={product.description} className="textarea textarea-bordered" ></textarea>
                             </div>
                             <div className="mb-5 space-x-2">
                                 <input className="btn btn-primary" type="submit" value="Update" />
@@ -70,7 +94,7 @@ const Modal = ({ id, isOpen, setIsOpen }) => {
                                 </button>
                             </div>
                         </form>
-
+                        <ToastContainer />
                     </div>
                 </div>
             </div>

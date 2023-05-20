@@ -12,13 +12,13 @@ const Products = () => {
         let url = '';
         switch (activeTab) {
             case 1:
-                url = 'http://localhost:5000/allToys?category=2to6';
+                url = 'https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/allToys?category=2to6';
                 break;
             case 2:
-                url = 'http://localhost:5000/allToys?category=7to10';
+                url = 'https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/allToys?category=7to10';
                 break;
             case 3:
-                url = 'http://localhost:5000/allToys?category=11toa';
+                url = 'https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/allToys?category=11toa';
                 break;
             default:
                 break;
