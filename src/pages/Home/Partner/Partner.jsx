@@ -10,7 +10,7 @@ const Partner = () => {
         <div className='mt-20'>
             <div className='px-4'>
                 <h1 className="text-5xl font-extrabold text-[#F7CD2E] text-center">Our Partners</h1>
-                <p className='text-3xl text-center text-primary font-semibold mt-4'>Some of the worlds leading e-commerce companies are our customers</p>
+                <p className='text-3xl text-center text-primary font-semibold mt-4'>Some of the worlds leading e-commerce companies are our wholesale buyers</p>
             </div>
 
 

@@ -23,8 +23,8 @@ const Gallery = () => {
 
     return (
         <div className="mt-10 p-4">
-            <h1 className="text-5xl font-extrabold text-[#F7CD2E] text-center">Our Happy Clients</h1>
-            <p className='text-3xl text-center text-primary font-semibold mt-4'>See some satisfied clients with our products</p>
+            <h1 className="text-5xl font-extrabold text-[#F7CD2E] text-center">Our Happy Customers</h1>
+            <p className='text-3xl text-center text-primary font-semibold mt-4'>Some satisfied customers with our products</p>
 
             <div className="md:flex md:flex-row md:space-x-4 space-x-0 md:space-y-0 space-y-4 mt-10">
                 {/* <!-- First Col --> */}
