@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
 import SingleProductCard from './SingleProductCard';
+import LoaderSpinner from '../../LoaderSpinner/LoaderSpinner';
+
 
 const Products = () => {
 
     const [activeTab, setActiveTab] = useState(2);
     const [products, setProducts] = useState([])
-
+    const [dataLoading, setDataLoading] = useState(false)
 
     useEffect(() => {
+        setDataLoading(true)
         let url = '';
         switch (activeTab) {
             case 1:
@@ -28,8 +31,8 @@ const Products = () => {
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
+                setDataLoading(false)
             })
-
     }, [activeTab])
 
 
@@ -65,42 +68,50 @@ const Products = () => {
                             11 Years - Above
                         </button>
                     </div>
-
                     <div>
                         {activeTab === 1 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
-                            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
-                                {
-                                    products.map(product =>
-                                        <SingleProductCard
-                                            key={product._id}
-                                            product={product}>
-                                        </SingleProductCard>)
-                                }
-                            </div>
+                            {dataLoading
+                                ? <LoaderSpinner></LoaderSpinner>
+                                : <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
+                                    {
+                                        products.map(product =>
+                                            <SingleProductCard
+                                                key={product._id}
+                                                product={product}>
+                                            </SingleProductCard>)
+                                    }
+                                </div>}
                         </div>}
+
                         {activeTab === 2 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
-                            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
-                                {
-                                    products.map(product =>
-                                        <SingleProductCard
-                                            key={product._id}
-                                            product={product}>
-                                        </SingleProductCard>)
-                                }
-                            </div>
+                            {dataLoading
+                                ? <LoaderSpinner></LoaderSpinner>
+                                : <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
+                                    {
+                                        products.map(product =>
+                                            <SingleProductCard
+                                                key={product._id}
+                                                product={product}>
+                                            </SingleProductCard>)
+                                    }
+                                </div>}
                         </div>}
+
                         {activeTab === 3 && <div className="py-6 px-2 bg-primary bg-opacity-25 rounded-b-md">
-                            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
-                                {
-                                    products.map(product =>
-                                        <SingleProductCard
-                                            key={product._id}
-                                            product={product}>
-                                        </SingleProductCard>)
-                                }
-                            </div>
+                            {dataLoading
+                                ? <LoaderSpinner></LoaderSpinner>
+                                : <div className='grid grid-cols-1 md:grid-cols-4 gap-4 justify-items-center'>
+                                    {
+                                        products.map(product =>
+                                            <SingleProductCard
+                                                key={product._id}
+                                                product={product}>
+                                            </SingleProductCard>)
+                                    }
+                                </div>}
                         </div>}
                     </div>
+
                 </div>
             </div>
         </div>
