@@ -53,58 +53,60 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        {menuLi}
-                        <li>
-                            {user
-                                ? <div className='flex items-center'>
-                                    <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2">LogOut</button>
-                                    <div className='h-14 w-14 rounded-full border-4 border-primary hidden md:block'>
-                                        <img src={user?.photoURL || profilePhoto} alt="Profile Photo"
-                                            className="h-full w-full rounded-full"
-                                            data-tooltip-id="my-tooltip"
-                                            data-tooltip-content={`Hello, ${user?.displayName}`} />
+        <div className='bg-slate-400'>
+            <div className="navbar bg-base-100 container mx-auto">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            {menuLi}
+                            <li>
+                                {user
+                                    ? <div className='flex items-center'>
+                                        <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2">LogOut</button>
+                                        <div className='h-14 w-14 rounded-full border-4 border-primary hidden md:block'>
+                                            <img src={user?.photoURL || profilePhoto} alt="Profile Photo"
+                                                className="h-full w-full rounded-full"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content={`Hello, ${user?.displayName}`} />
+                                        </div>
                                     </div>
-                                </div>
-                                : <Link to='/login' className="btn btn-primary btn-sm hidden md:block">Login</Link>
-                            }
-                        </li>
+                                    : <Link to='/login' className="btn btn-primary btn-sm hidden md:block">Login</Link>
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                    <Link to='/' className='hidden md:block'>
+                        <img src={logo} alt="logo" className='h-[80px] w-[80px]' />
+                    </Link>
+                    <Link to='/' className='ms-2'>
+                        <h1 className='text-4xl font-extrabold'><span className='text-[#F7CD2E]'>Baby</span><span className='text-primary'> Soldier</span></h1>
+                    </Link>
+                </div>
+                <div className="navbar-center hidden md:flex">
+                    <ul className="menu menu-horizontal px-1">
+                        {menuLi}
                     </ul>
                 </div>
-                <Link to='/' className='hidden md:block'>
-                    <img src={logo} alt="logo" className='h-[80px] w-[80px]' />
-                </Link>
-                <Link to='/' className='ms-2'>
-                    <h1 className='text-4xl font-extrabold'><span className='text-[#F7CD2E]'>Baby</span><span className='text-primary'> Soldier</span></h1>
-                </Link>
-            </div>
-            <div className="navbar-center hidden md:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {menuLi}
-                </ul>
-            </div>
-            <div className="navbar-end">
-                {user
-                    ? <div className='flex items-center'>
-                        <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2 hidden md:block">LogOut</button>
-                        <div className='h-14 w-14 rounded-full border-4 border-primary'>
-                            <img src={user?.photoURL || profilePhoto} alt="Profile Photo"
-                                className="h-full w-full rounded-full"
-                                data-tooltip-id="my-tooltip"
-                                data-tooltip-content={`Hello, ${user?.displayName}`} />
+                <div className="navbar-end">
+                    {user
+                        ? <div className='flex items-center'>
+                            <button onClick={handleLogout} className="btn btn-primary btn-sm mr-2 hidden md:block">LogOut</button>
+                            <div className='h-14 w-14 rounded-full border-4 border-primary'>
+                                <img src={user?.photoURL || profilePhoto} alt="Profile Photo"
+                                    className="h-full w-full rounded-full"
+                                    data-tooltip-id="my-tooltip"
+                                    data-tooltip-content={`Hello, ${user?.displayName}`} />
+                            </div>
                         </div>
-                    </div>
-                    : <Link to='/login' className="btn btn-primary btn-sm">Login</Link>
-                }
-                <Tooltip id="my-tooltip" />
+                        : <Link to='/login' className="btn btn-primary btn-sm">Login</Link>
+                    }
+                    <Tooltip id="my-tooltip" />
+                </div>
+                <ToastContainer />
             </div>
-            <ToastContainer />
         </div>
     );
 };
