@@ -15,7 +15,7 @@ const Gallery = () => {
 
     useEffect(() => {
         AOS.init({
-            duration: 2000, // Animation duration in milliseconds
+            duration: 2000
         });
     }, []);
 
