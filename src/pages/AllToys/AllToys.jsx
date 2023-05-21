@@ -13,10 +13,13 @@ const AllToys = () => {
 
     useEffect(() => {
         setDataLoading(true)
-        if (inputValue == '') {
+
+        if (!inputValue) {
             setDataToShow(loadedToys)
             setDataLoading(false)
+            return
         }
+
         fetch(`https://b7a11-toy-marketplace-server-side-sohelranalive.vercel.app/searchToyByName/${inputValue}`)
             .then(res => res.json())
             .then(data => {
