@@ -13,7 +13,7 @@ const AllToys = () => {
 
     useEffect(() => {
         setDataLoading(true)
-        if (inputValue === '') {
+        if (inputValue == '') {
             setDataToShow(loadedToys)
             setDataLoading(false)
         }
