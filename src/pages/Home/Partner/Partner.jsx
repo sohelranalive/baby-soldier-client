@@ -16,7 +16,7 @@ const Partner = () => {
 
 
                 <div className="flex justify-center mt-4 px-4">
-                    <div className="">
+                    <div className="marquee-container">
                         <Marquee>
                             <div>
                                 <img

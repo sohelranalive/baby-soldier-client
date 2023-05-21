@@ -18,3 +18,18 @@
 .b-default:hover {
     background-color: #F7CD2E;
 }
+
+@media (max-width: 768px) {
+    .marquee-container {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .marquee-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .marquee-container div {
+        display: inline-block;
+    }
+}
