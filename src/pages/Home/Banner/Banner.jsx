@@ -2,9 +2,8 @@ import banner from '../../../assets/banner.jpg'
 
 const Banner = () => {
     return (
-
-        <div className='bg-purple-200'>
-            <div className='md:flex shadow-xl py-6 px-4 container mx-auto'>
+        <div className='shadow-xl'>
+            <div className='container mx-auto md:flex py-6 px-4'>
                 <div className='md:w-1/2 h-[400px]'>
                     <img src={banner} alt="" className='w-full h-full' />
                 </div>
