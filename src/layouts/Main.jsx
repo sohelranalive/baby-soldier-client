@@ -13,6 +13,7 @@ const Main = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [pathname]);
 
+    //set the path name according to path
     useEffect(() => {
         const pageTitle = getTitleFromPathName(pathname);
         document.title = pageTitle;

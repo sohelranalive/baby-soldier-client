@@ -20,6 +20,7 @@ const Upcoming = () => {
             <h1 className="text-5xl font-extrabold text-[#F7CD2E] text-center">New Addition - Vehicle</h1>
             <p className='text-3xl text-center text-primary font-semibold mt-4'>Coming Soon</p>
             <div className="mt-10">
+
                 <div className="md:flex justify-between gap-4 space-y-4 md:space-y-0">
                     <div
                         className="md:w-1/3 h-96 relative rounded-md border border-[#F7CD2E]"
@@ -40,6 +41,7 @@ const Upcoming = () => {
                             </div>
                         )}
                     </div>
+
                     <div
                         className="md:w-1/3 h-96 relative rounded-md border border-primary"
                         onMouseEnter={() => handleMouseEnter(2)}
@@ -59,6 +61,7 @@ const Upcoming = () => {
                             </div>
                         )}
                     </div>
+
                     <div
                         className="md:w-1/3 h-96 relative rounded-md border border-[#F7CD2E]"
                         onMouseEnter={() => handleMouseEnter(3)}
@@ -78,7 +81,9 @@ const Upcoming = () => {
                             </div>
                         )}
                     </div>
+
                 </div>
+
             </div>
         </div>
     );

@@ -6,35 +6,8 @@ const AllToys = () => {
 
     const loadedToys = useLoaderData()
 
-    // const [products, setProducts] = useState(loadedToys);
-
-    // const [inputValue, setInputValue] = useState('');
-
-    // useEffect(() => {
-    //     const result = products.filter((item) => item.toy_name.includes(inputValue));
-    //     setProducts(result);
-    // }, [inputValue]);
-
     const [inputValue, setInputValue] = useState('');
     const [dataToShow, setDataToShow] = useState([]);
-
-    // useEffect(() => {
-    //     if (inputValue === '') {
-    //         setDataToShow(loadedToys)
-    //         return;
-    //     }
-    //     setDataToShow(loadedToys);
-    // }, [loadedToys, inputValue]);
-
-    // useEffect(() => {
-    //     if (inputValue === '') {
-    //         setDataToShow(loadedToys);
-    //     } else {
-    //         const result = loadedToys.filter((item) =>
-    //             item.toy_name.toLowerCase().includes(inputValue.toLowerCase()));
-    //         setDataToShow(result);
-    //     }
-    // }, [inputValue, loadedToys]);
 
     useEffect(() => {
         if (inputValue === '') {
